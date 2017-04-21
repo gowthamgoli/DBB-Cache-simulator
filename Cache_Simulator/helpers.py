@@ -18,7 +18,7 @@ def getParamsOfAddress(currAddress, request, params):
 	mask = ((1 << params.tagSize) - 1) << (params.offsetSize+params.indexSize)
 	print bin(mask)
 	request.tag = mask & currAddress'''
-	x = bin(currAddress)[2:]
+	x = bin(currAddress)[2:].zfill(32)
 	#print str(currAddress) + ' : '+ x
 	#print x[-params.offsetSize:]
 	request.offset = int(x[-params.offsetSize:],2)

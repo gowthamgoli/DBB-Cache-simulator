@@ -53,7 +53,7 @@ def main():
 			#	print x.blocks
 			#print ''
 
-	print cacheManager.hits, cacheManager.misses
+	print cacheManager.hits, cacheManager.misses, 1.0*cacheManager.hits/(cacheManager.hits+cacheManager.misses)
 	#print cacheManagerOld.hits, cacheManagerOld.misses
 
 if __name__ == '__main__':
