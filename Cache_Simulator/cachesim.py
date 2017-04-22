@@ -8,8 +8,8 @@ def main():
 	
 	params = CacheParameters()
 	request = Address()
-	cacheManager = CacheManger()
-	cacheManagerOld = CacheMangerOld()
+	cacheManager = CacheMangerOld()
+	#cacheManagerOld = CacheMangerOld()
 
 	inputFile = sys.argv[1]
 	params.cacheSize = int(sys.argv[2])
@@ -29,7 +29,7 @@ def main():
 	getParamSizes(params)
 	print params
 	print ''
-	#print params.tagSize, params.indexSize, params.offsetSize
+	print params.tagSize, params.indexSize, params.offsetSize
 
 	#currAddress = 123879438
 	#getParamsOfAddress(currAddress, request, params)

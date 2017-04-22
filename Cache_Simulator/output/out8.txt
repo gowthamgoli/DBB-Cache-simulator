@@ -1,0 +1,5 @@
+cacheSize = 8192 | blockSize = 1 | numBlocks = 8192 | associativity = 4 | numSets = 2048
+
+21 11 0
+00011111111111111111101110101000
+

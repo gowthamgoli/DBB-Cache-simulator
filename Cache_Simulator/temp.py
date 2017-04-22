@@ -2,6 +2,7 @@ from random import randint
 class CacheManger:
 	hits = 0
 	misses = 0
+	#replacement = 0
 
 	def start(self, sets, request, params):
 		if self.isPresentInCache(sets, request):
@@ -40,7 +41,3 @@ class CacheManger:
 		if params.replacement == 'L':
 			#print "Replaced set Index " + str(request.index) + " block first"
 			sets[request.index].blocks.popitem(last=False)
-
-
-
-

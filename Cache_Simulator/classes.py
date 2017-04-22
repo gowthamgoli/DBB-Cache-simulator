@@ -33,3 +33,8 @@ class CacheTable:
 class Sets:
 	def __init__(self):
 		self.blocks = OrderedDict()
+
+class Blocks:
+	def __init__(self):
+		self.sizes = {}
+		self.cfg = {}
