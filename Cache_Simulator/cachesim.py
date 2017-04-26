@@ -29,7 +29,7 @@ def main():
 	getParamSizes(params)
 	print params
 	print ''
-	print params.tagSize, params.indexSize, params.offsetSize
+	#print params.tagSize, params.indexSize, params.offsetSize
 
 	#currAddress = 123879438
 	#getParamsOfAddress(currAddress, request, params)

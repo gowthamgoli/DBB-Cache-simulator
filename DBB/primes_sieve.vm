@@ -1,6 +1,6 @@
 # Written and contributed by "vokidas"
 
-        mov eax, 100
+        mov eax, 1000
 
         mov ebx, eax
 fillStack:

@@ -58,8 +58,8 @@ def main():
 			dbb.cfg[address][neighbor] = (lastRange, lastRange + temp)
 			lastRange = 1.0*temp
 
-	print dbb.cfg
-	print ''
+	#print dbb.cfg
+	#print ''
 
 	for i in range(0, len(content)):
 		addressStream.append(content[i])
@@ -99,9 +99,9 @@ def main():
 		#prevAdress = currAddress
 		#for x in sets:
 		#	print x.blocks
-		print ''
+		#print ''
 
-	print cacheManager.hits, cacheManager.misses 
+	print cacheManager.hits, cacheManager.misses, 1.0*(cacheManager.hits)/(cacheManager.hits+cacheManager.misses)
 	#print cacheManagerOld.hits, cacheManagerOld.misses
 
 if __name__ == '__main__':

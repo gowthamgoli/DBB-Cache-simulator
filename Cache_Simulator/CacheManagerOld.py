@@ -1,4 +1,6 @@
 from random import randint
+from collections import OrderedDict
+
 class CacheMangerOld:
 	hits = 0
 	misses = 0
@@ -41,3 +43,6 @@ class CacheMangerOld:
 		if params.replacement == 'L':
 			#print "Replaced set Index " + str(request.index) + " block first"
 			sets[request.index].blocks.popitem(last=False)
+
+		if params.replacement == 'F':
+			sets[request.index].blocks = OrderedDict()
