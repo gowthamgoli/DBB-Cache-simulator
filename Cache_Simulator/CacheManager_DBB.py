@@ -8,6 +8,7 @@ from collections import OrderedDict
 class CacheManger_DBB:
 	hits = 0
 	misses = 0
+	replaces = 0
 
 	def start(self, sets, currAddress, request, params, dbb):
 		if self.isPresentInCache(sets, request):
@@ -45,6 +46,7 @@ class CacheManger_DBB:
 
 		if len(sets[request.index].blocks) == params.associativity:
 			#print "No place found ---- replace"
+			self.replaces += 1
 			self.replaceBlock(sets, request, params)
 		#print ""
 		sets[request.index].blocks[request.tag] = True

@@ -13,8 +13,8 @@ def main():
 	dbb = Blocks()
 	#cacheManagerOld = CacheMangerOld()
 
-	blocksFile = sys.argv[1]
-	traceFile = sys.argv[2]
+	blocksFile = 'bb-trace/' + sys.argv[1]
+	traceFile = 'bb-trace/' + sys.argv[2]
 	params.cacheSize = int(sys.argv[3])
 	params.blockSize = int(sys.argv[4])
 	params.associativity = int(sys.argv[5])
@@ -28,8 +28,8 @@ def main():
 		for line in f:
 			tokens = line.strip().split()
 			dbb.sizes[int(tokens[0])] = int(tokens[1])
-	print dbb.sizes
-	print ''
+	#print dbb.sizes
+	#print ''
 	
 	with open(traceFile) as f:
 		content = f.readlines()
@@ -45,8 +45,8 @@ def main():
 				dbb.cfg[currAddress][nextAddress] = 1
 			else:
 				dbb.cfg[currAddress][nextAddress] += 1
-	print dbb.cfg
-	print ''
+	#print dbb.cfg
+	#print ''
 
 	for address in dbb.cfg:
 		sumEdges = 0
@@ -78,12 +78,9 @@ def main():
 	#cacheManager.replacement = params.replacement
 
 	getParamSizes(params)
-	print params
-	print ''
+	#print params
+	#print ''
 	#print params.tagSize, params.indexSize, params.offsetSize
-
-
-
 
 	prevAdress = 0
 	
@@ -100,8 +97,24 @@ def main():
 		#for x in sets:
 		#	print x.blocks
 		#print ''
-
-	print cacheManager.hits, cacheManager.misses, 1.0*(cacheManager.hits)/(cacheManager.hits+cacheManager.misses)
+	if params.replacement == 'L':
+		policy = 'LRU'
+	elif params.replacement == 'F':
+		policy = 'FWF'
+	elif params.replacement == 'C':
+		policy = 'LAI'
+	elif params.replacement == 'R':
+		policy = 'Random'
+	print ''
+	print 'total number of distinct blocks = ' + str(len(dbb.sizes))
+	print 'total number of blocks executed = ' + str(len(addressStream))
+	print 'replacement policy = ' + policy
+	print ''
+	print 'number of times code cache accessed = ' + str(cacheManager.hits+cacheManager.misses)
+	print 'code cache miss rate = ' + str(1.0*(cacheManager.misses)/(cacheManager.hits+cacheManager.misses))
+	print 'code cache hit rate = ' + str(1.0*(cacheManager.hits)/(cacheManager.hits+cacheManager.misses))
+	print 'total number of blocks evacuated from cache = ' + str(cacheManager.replaces)
+	#cacheManager.hits, cacheManager.misses, 1.0*(cacheManager.hits)/(cacheManager.hits+cacheManager.misses)
 	#print cacheManagerOld.hits, cacheManagerOld.misses
 
 if __name__ == '__main__':

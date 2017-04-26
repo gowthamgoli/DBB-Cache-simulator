@@ -31,7 +31,7 @@ call_subroutine = {'mov':mov, 'push':push, 'pop':pop, 'pushf':pushf, 'popf':popf
 
 
 def parseFile(filename, pc):
-	lines = open(filename,'r').read().split('\n')
+	lines = open('input/'+filename,'r').read().split('\n')
 	#print lines
 	currLabel = 'Null'
 	pc.instructions[currLabel] = []
@@ -153,12 +153,12 @@ def main():
 			pc.curr_label = pc.labels[pc.label_index]
 			pc.inst_num = 0
 	#print blocks.basiblocks
-	sys.stdout=open(filename+'.trace',"w")
+	sys.stdout=open('bb-trace/'+filename+'.trace',"w")
 	for x in addressStream:
 		print x
 	sys.stdout.close()
 	
-	sys.stdout=open(filename+'.bb',"w")
+	sys.stdout=open('bb-trace/'+filename+'.bb',"w")
 	for x in blocksInfo:
 		print x[0],
 		print x[1]
