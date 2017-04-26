@@ -4,6 +4,7 @@ from collections import OrderedDict
 class CacheMangerOld:
 	hits = 0
 	misses = 0
+	replaces = 0
 	#replacement = 0
 
 	def start(self, sets, request, params):
@@ -35,6 +36,7 @@ class CacheMangerOld:
 		sets[request.index].blocks[request.tag] = True
 
 	def replaceBlock(self, sets, request, params):
+		self.replaces += 1
 		if params.replacement == 'R':
 			replaceInd = randint(0, params.associativity-1)
 			#print "Replaced set Index " + str(request.index) + " block " + str(replaceInd)

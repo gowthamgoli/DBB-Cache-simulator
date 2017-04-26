@@ -1,7 +1,7 @@
 import sys
 from classes import *
 from helpers import *
-from CacheManager import *
+#from CacheManager import *
 from CacheManagerOld import *
 
 def main():
@@ -11,7 +11,7 @@ def main():
 	cacheManager = CacheMangerOld()
 	#cacheManagerOld = CacheMangerOld()
 
-	inputFile = sys.argv[1]
+	inputFile = 'input/'+sys.argv[1]
 	params.cacheSize = int(sys.argv[2])
 	params.blockSize = int(sys.argv[3])
 	params.associativity = int(sys.argv[4])
@@ -27,8 +27,8 @@ def main():
 	#cacheManager.replacement = params.replacement
 
 	getParamSizes(params)
-	print params
-	print ''
+	#print params
+	#print ''
 	#print params.tagSize, params.indexSize, params.offsetSize
 
 	#currAddress = 123879438
@@ -53,8 +53,10 @@ def main():
 			#	print x.blocks
 			#print ''
 
-	print cacheManager.hits, cacheManager.misses, 1.0*cacheManager.hits/(cacheManager.hits+cacheManager.misses)
-	#print cacheManagerOld.hits, cacheManagerOld.misses
+	print 'number of times code cache accessed = ' + str(cacheManager.hits+cacheManager.misses)
+	print 'code cache miss rate = ' + str(1.0*(cacheManager.misses)/(cacheManager.hits+cacheManager.misses))
+	print 'code cache hit rate = ' + str(1.0*(cacheManager.hits)/(cacheManager.hits+cacheManager.misses))
+	print 'total number of blocks evacuated from cache = ' + str(cacheManager.replaces)
 
 if __name__ == '__main__':
 	main()

@@ -1,3 +1,0 @@
-cacheSize = 8192 | blockSize = 32 | numBlocks = 256 | associativity = 2 | numSets = 128
-
-1407864 92136 0.938576
